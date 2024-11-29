@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Box Model, Display, and Positioning</title>
+  <style>
+    /* CSS Box Model */
+    .box-model {
+      padding: 20px; /* Space between content and border */
+      border: 5px solid blue; /* Adds a solid border around the box */
+      margin: 30px; /* Space outside the box, separating it from other elements */
+      background-color: lightgray; /* Sets the background color inside the padding area */
+      box-sizing: content-box; /* Padding and border are outside the specified width/height */
+    }
+    .box-model.border-box {
+      box-sizing: border-box; /* Padding and border are included in the specified width/height */
+    }
+
+    /* Display Property */
+    .box1 {
+      display: block; /* Takes up the full width of its parent container */
+      margin: 20px auto; /* Centers the box horizontally */
+      width: 200px; /* Fixed width of the box */
+      text-align: center; /* Centers the text inside the box */
+      background-color: coral; /* Background color for the box */
+      padding: 10px; /* Space inside the box around the content */
+    }
+    .inline-text {
+      display: inline; /* Displays the element inline with surrounding text */
+      color: green;
+    }
+    .box2 {
+      display: inline; /* Aligns with the text flow */
+      background-color: lightblue; /* Background color for visual distinction */
+      padding: 5px; /* Space inside the box around the text */
+    }
+    .box3 {
+      display: inline-block; /* Allows setting width/height while aligning with text flow */
+      width: 150px; /* Width of the box */
+      height: 50px; /* Height of the box */
+      background-color: lightpink; /* Background color for the box */
+      text-align: center; /* Centers the text horizontally */
+      line-height: 50px; /* Centers the text vertically */
+    }
+
+    /* CSS Display Property - none */
+    .btn-container {
+      position: relative; /* Sets this container as a reference point for positioning */
+    }
+    .btn-hidden {
+      display: none; /* Initially hides the second button */
+    }
+    .btn-show:hover + .btn-hidden {
+      display: inline-block; /* Displays the second button when hovering over the first */
+    }
+    .btn-show, .btn-hidden {
+      padding: 10px; /* Adds padding inside the button */
+      margin: 10px; /* Space around each button */
+      background-color: dodgerblue; /* Button background color */
+      color: white; /* Text color */
+      border: none; /* Removes default button border */
+      cursor: pointer; /* Changes cursor to pointer on hover */
+    }
+
+    /* Positioning */
+    .static-box {
+      position: static; /* Default positioning (no additional offsets) */
+      background-color: #f0f0f0;
+      padding: 10px;
+      margin: 10px;
+    }
+    .relative-box {
+      position: relative; /* Positioned relative to its normal position */
+      top: 20px; /* Moves the box 20px down */
+      left: 30px; /* Moves the box 30px to the right */
+      background-color: #c0c0f0;
+      padding: 10px;
+    }
+    .absolute-container {
+      position: relative; /* Sets this container as the reference for absolute positioning */
+      height: 200px; /* Fixed height for the container */
+      border: 2px solid black; /* Visual distinction for the container */
+    }
+    .absolute-box {
+      position: absolute; /* Positioned relative to the nearest positioned ancestor */
+      bottom: 0; /* Moves to the bottom of the container */
+      right: 0; /* Moves to the right side of the container */
+      background-color: #f0c0c0;
+      padding: 10px;
+    }
+    .fixed-box {
+      position: fixed; /* Positioned relative to the viewport */
+      bottom: 10px; /* Fixed 10px from the bottom of the viewport */
+      right: 10px; /* Fixed 10px from the right of the viewport */
+      background-color: #c0f0c0; /* Background color for the box */
+      padding: 10px; /* Adds padding inside the box */
+    }
+  </style>
+</head>
+<body>
+  <!-- CSS Box Model Section -->
+  <h2>CSS Box Model</h2>
+  <!-- Demonstrating content-box -->
+  <div class="box-model">Hello, World! (content-box)</div>
+  <!-- Demonstrating border-box -->
+  <div class="box-model border-box">Hello, World! (border-box)</div>
+  <!-- Explanation:
+    - The first box uses content-box: Padding and border are added to the width/height.
+    - The second box uses border-box: Padding and border are included in the width/height.
+  -->
+
+  <!-- Display Property Section -->
+  <h2>Display Property</h2>
+  <!-- Box 1: Block-level element centered horizontally -->
+  <div class="box1">Box 1</div>
+  <!-- Inline element (Box 2) alongside some text -->
+  <div>
+    <span class="inline-text">Inline text</span>
+    <span class="box2">Box 2</span>
+  </div>
+  <!-- Inline-block element (Box 3) with fixed dimensions -->
+  <div class="box3">Box 3</div>
+  <!-- Explanation:
+    - Box 1 is block-level and centers using margin: auto.
+    - Box 2 is inline and aligns with surrounding text.
+    - Box 3 is inline-block, allowing width and height to be set.
+  -->
+
+  <!-- CSS Display Property - none -->
+  <h2>CSS Display Property - None</h2>
+  <div class="btn-container">
+    <!-- Button 1: Always visible -->
+    <button class="btn-show">Show Hidden Button</button>
+    <!-- Button 2: Hidden initially, appears on hover -->
+    <button class="btn-hidden">Hidden Button</button>
+  </div>
+  <!-- Explanation:
+    - Button 2 is hidden initially using display: none.
+    - Button 2 appears when Button 1 is hovered over.
+    - CSS sibling selector (+) is used to toggle visibility.
+  -->
+
+  <!-- Positioning Section -->
+  <h2>Positioning</h2>
+  <!-- Static positioning (default) -->
+  <div class="static-box">Static Box</div>
+  <!-- Relative positioning with offset -->
+  <div class="relative-box">Relative Box</div>
+  <!-- Absolute positioning inside a relative container -->
+  <div class="absolute-container">
+    <div class="absolute-box">Absolute Box</div>
+  </div>
+  <!-- Fixed positioning relative to the viewport -->
+  <div class="fixed-box">Fixed Box</div>
+  <!-- Explanation:
+    - Static Box uses default positioning.
+    - Relative Box moves 20px down and 30px right from its normal position.
+    - Absolute Box is placed in the bottom-right corner of its relative container.
+    - Fixed Box stays at the bottom-right corner of the viewport even during scrolling.
+  -->
+</body>
+</html>
